@@ -1,0 +1,63 @@
+# dependencies
+node_modules
+.pnp
+.pnp.js
+/.idea/
+.vscode
+.history
+/.yarn
+.yarnrc.yml
+precache-manifest.json
+sw.js
+sw.js.map
+
+# testing
+coverage
+
+# next.js
+.next/
+out/
+
+# production
+/build
+/apps/**/public/robots.txt
+/apps/**/public/sitemap.xml
+
+# sprites
+/apps/**/public/sprites
+/packages/**/sprite.gen.ts
+
+# cache
+/apps/**/public/cache
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# local env files
+.env*.local
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+
+# turborepo
+.turbo
+
+#docker dev
+.bash_history
+.cache/
+.npm/
+.yarn/
+.yarnrc
+.local/
+.config/
+analyze/
