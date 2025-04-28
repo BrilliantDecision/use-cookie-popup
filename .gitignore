@@ -1,9 +1,9 @@
 # dependencies
 node_modules
+dist
 .pnp
 .pnp.js
 /.idea/
-dist/
 .vscode
 .history
 /.yarn
