@@ -3,40 +3,37 @@ import resolve from "@rollup/plugin-node-resolve";
 import external from "rollup-plugin-peer-deps-external";
 import commonjs from "@rollup/plugin-commonjs";
 import terser from "@rollup/plugin-terser";
-import typescript from "@rollup/plugin-typescript";
+// import typescript from "@rollup/plugin-typescript";
+import typescript from "rollup-plugin-typescript2";
 import dts from "rollup-plugin-dts";
+import packageJson from "./package.json" assert { type: "json" };
 
 export default [
   {
-    input: "./src/react-cookie-hook.ts",
+    input: "./src/index.ts",
     output: [
       {
-        file: "dist/cjs/index.js",
+        file: packageJson.main,
         format: "cjs",
+        sourcemap: true,
       },
       {
-        file: "dist/esm/index.js",
+        file: packageJson.module,
         format: "es",
-        exports: "named",
+        sourcemap: true,
       },
     ],
     plugins: [
       external(),
-      resolve({ extensions: [".ts"] }),
       commonjs(),
+      resolve(),
       typescript({ tsconfig: "./tsconfig.json" }),
-      babel({
-        babelHelpers: "bundled",
-        exclude: "node_modules/**",
-        presets: [["@babel/preset-react", { runtime: "automatic" }]],
-        extensions: [".ts", ".jsx"],
-      }),
       terser(),
     ],
   },
   {
-    input: "dist/esm/types/index.d.ts",
-    output: [{ file: "dist/index.d.ts", format: "esm" }],
+    input: "dist/esm/index.d.ts",
+    output: [{ file: "dist/index.d.ts", format: "es" }],
     plugins: [dts()],
   },
 ];
