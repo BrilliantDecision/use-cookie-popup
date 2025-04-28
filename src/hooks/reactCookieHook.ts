@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getCookie, setCookie } from "../api/cookieApi";
 
 export interface UseCookieProps {
@@ -15,20 +15,7 @@ export interface UseCookieProps {
  * @returns isVisible for popup and tools for managing visibity
  */
 export const useCookie = ({ name, showUpDelay }: UseCookieProps) => {
-  const [isVisible, setIsVisible] = useState(() => {
-    const cookie = getCookie(name);
-
-    if (cookie) {
-      return false;
-    }
-
-    if (showUpDelay) {
-      setTimeout(() => setIsVisible(true), showUpDelay);
-      return false;
-    }
-
-    return true;
-  });
+  const [isVisible, setIsVisible] = useState(false);
 
   const onClose = () => {
     setIsVisible(false);
@@ -43,6 +30,14 @@ export const useCookie = ({ name, showUpDelay }: UseCookieProps) => {
     onClose();
     setCookie(name, false);
   };
+
+  useEffect(() => {
+    const cookie = getCookie(name);
+
+    if (!cookie) {
+      setTimeout(() => setIsVisible(true), showUpDelay);
+    }
+  }, []);
 
   return {
     isVisible,
