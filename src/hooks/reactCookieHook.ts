@@ -6,35 +6,49 @@ export interface UseCookieProps {
   showUpDelay?: number;
 }
 
+/**
+ * React hook for working with cookie popup
+ *
+ * @param name - name of a cookie,
+ * true when cookie was accepted, false when cookie was rejected
+ * @param showUpDelay - cookie apperas after this delay,
+ * @returns isVisible for popup and tools for managing visibity
+ */
 export const useCookie = ({ name, showUpDelay }: UseCookieProps) => {
   const [isVisible, setIsVisible] = useState(() => {
     const cookie = getCookie(name);
 
-    if (!cookie) {
-      setCookie(name, true);
-      return true;
+    if (cookie) {
+      return false;
     }
 
-    if (cookie === "true") {
-      if (showUpDelay) {
-        setTimeout(() => setIsVisible(true), showUpDelay);
-        return false;
-      } else {
-        return true;
-      }
+    if (showUpDelay) {
+      setTimeout(() => setIsVisible(true), showUpDelay);
+      return false;
     }
 
-    return false;
+    return true;
   });
 
-  const onAccept = () => {
+  const onClose = () => {
     setIsVisible(false);
-    setCookie(name, false);
+  };
+
+  const onAccept = () => {
+    onClose();
+    setCookie(name, true);
   };
 
   const onDecline = () => {
-    setIsVisible(false);
+    onClose();
+    setCookie(name, false);
   };
 
-  return { isVisible, setIsVisible, onAccept, onDecline };
+  return {
+    isVisible,
+    setIsVisible,
+    onAccept,
+    onDecline,
+    onClose,
+  };
 };
