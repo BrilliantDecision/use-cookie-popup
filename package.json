@@ -8,6 +8,9 @@
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/BrilliantDecision"
+  },
   "scripts": {
     "build": "rollup -c ./rollup.config.mjs"
   },
