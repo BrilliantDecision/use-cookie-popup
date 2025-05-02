@@ -11,7 +11,7 @@
   "scripts": {
     "build": "rollup -c ./rollup.config.mjs"
   },
-  "keywords": [],
+  "keywords": ["react", "cookie", "popup"],
   "author": "Alexandr Rybalko",
   "license": "MIT",
   "packageManager": "pnpm@10.9.0",
