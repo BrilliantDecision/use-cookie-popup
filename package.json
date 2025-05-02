@@ -1,6 +1,6 @@
 {
   "name": "use-cookie-popup",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "React hook to work with cookie popup",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -11,7 +11,12 @@
   "scripts": {
     "build": "rollup -c ./rollup.config.mjs"
   },
-  "keywords": ["react", "cookie", "popup", "client"],
+  "keywords": [
+    "react",
+    "cookie",
+    "popup",
+    "client"
+  ],
   "author": "Alexandr Rybalko",
   "license": "MIT",
   "packageManager": "pnpm@10.9.0",
