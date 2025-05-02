@@ -14,7 +14,7 @@ export interface UseCookieProps {
  * @param showUpDelay - cookie apperas after this delay,
  * @returns isVisible for popup and tools for managing visibity
  */
-export const useCookie = ({ name, showUpDelay }: UseCookieProps) => {
+export const useCookiePopup = ({ name, showUpDelay }: UseCookieProps) => {
   const [isVisible, setIsVisible] = useState(false);
 
   const onClose = () => {

@@ -1,1 +1,1 @@
-export * from "./hooks/reactCookieHook";
+export * from "./hooks/useCookiePopup";
