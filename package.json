@@ -37,7 +37,7 @@
     "typescript": "^5.8.3"
   },
   "peerDependencies": {
-    "react": "^16.14.0"
+    "react": ">=16.14.0"
   },
   "dependencies": {
     "cookie": "^1.0.2"
