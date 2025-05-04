@@ -23,8 +23,6 @@ Use the library:
 ```tsx
 import { useCookiePopup } from "use-cookie-popup";
 
-import { useCookiePopup } from "./hooks/useCookiePopup";
-
 export const MainComponent = () => {
   const { isVisible, onAccept, onDecline } = useCookiePopup({
     name: "cookie-name",
